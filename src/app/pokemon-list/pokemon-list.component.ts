@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterContentInit } from '@angular/core';
+import { Pokemon } from '../pokemon';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -6,9 +7,9 @@ import { DataService } from '../services/data.service';
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, DoCheck, AfterContentInit {
     fetchedPokemon: any[] = [];
-    fetchedPokemonDescription: any[] = [];
+    pokemonList: Pokemon[] = [];
 
     constructor(
       private dataService: DataService
@@ -16,6 +17,14 @@ export class PokemonListComponent implements OnInit {
 
     ngOnInit(): void {
       this.getPokemon();
+    }
+
+    ngDoCheck(): void {
+      console.log("doCheck()");
+    }
+
+    ngAfterContentInit(): void {
+      console.log("afterContentInit()");
     }
 
     getPokemon() {
@@ -33,18 +42,28 @@ export class PokemonListComponent implements OnInit {
           //The results are added to the 'fetchedPokemon' array
           .subscribe((specificPokemon: any) => {
             this.fetchedPokemon.push(specificPokemon);
-          })
-
-          //We can use 'name' with the data service getPokemonDataDescription to pull each pokemon's pokedex description
-          this.dataService.getPokemonDescription(result.name)
-
-           //response returns an Observable specific pokemon with many attributes
-          //from here we can use these attributes to display pokemon data. 
-          //The results are added to the 'fetchedPokemon' array
-          .subscribe((specificPokemon: any) => {
-            this.fetchedPokemonDescription.push(specificPokemon.flavor_text_entries[0].flavor_text);
+            this.pokemonList.push(new Pokemon(specificPokemon.id, 
+                                  specificPokemon.name, specificPokemon.height, 
+                                  specificPokemon.weight, specificPokemon.sprites.front_default))
           })
         })
       })
     }
+
+    convertApiToPokemon() {
+      for(let i = 0; i < this.fetchedPokemon.length; i++) {
+        this.pokemonList.push(new Pokemon(
+          this.fetchedPokemon[i].id,
+          this.fetchedPokemon[i].name,
+          this.fetchedPokemon[i].height,
+          this.fetchedPokemon[i].weight,
+          this.fetchedPokemon[i].sprites.front_default))
+      }
+      console.log(this.pokemonList);     
+    }
+
+    displayData(){
+      console.log(this.pokemonList);
+    }
+
 }
