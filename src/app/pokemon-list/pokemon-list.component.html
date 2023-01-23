@@ -1,1 +1,8 @@
-<p>pokemon-list works!</p>
+<!-- Pokemon Grid -->
+<div class="pokemon-grid" >
+    <div class="box" *ngFor="let pokemon of fetchedPokemon">
+        <img [src]="pokemon.sprites.front_default" alt="pokemon-image">
+        <h3>{{pokemon.name | uppercase }}</h3>
+        <p>Pokedex ID: {{pokemon.id}}</p>
+    </div>
+</div>
