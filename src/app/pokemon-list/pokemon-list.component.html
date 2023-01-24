@@ -1,10 +1,11 @@
-<!-- Pokemon Grid -->
-<div class="pokemon-grid" >
-    <div class="box" *ngFor="let pokemon of pokemonList">
-        <img [src]="pokemon.urlImage" alt="pokemon-image">
-        <h3> <a routerLink="/detail/{{pokemon.id}}">
-            <span class="badge">{{pokemon.id}}</span>
-            {{pokemon.name | uppercase}}
-        </a></h3>
-    </div>
+
+<div class="list" >
+        <div *ngFor="let pokemon of pokemonList | paginate: { itemsPerPage: 10, currentPage: p}" >
+            <h3> <a routerLink="/detail/{{pokemon.id}}">
+                <span class="badge">{{pokemon.id}}</span>
+                {{pokemon.name | uppercase}}
+            </a> </h3>
+            <img [src]="pokemon.urlImage" [alt]="pokemon.name">
+        </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

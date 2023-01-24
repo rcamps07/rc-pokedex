@@ -1,58 +1,17 @@
-/* Pokemon Grid */
-.pokemon-grid {
-    display: grid;
-    grid-gap: 16px;
-    padding: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
-}
-
-.pokemon-grid .box {
-    width: 100%;
-    height: 300px;
-    box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
-    display: grid;
-    text-align: left;
-}
-
-.pokemon-grid .box img {
-    align-self: flex-end;
-}
-
-.pokemon-grid a {
-    color: #333;
-    text-decoration: none;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-    display: block;
-    width: 100%;
+/* pagination styling */
+  :host {
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   }
   
-  .pokemon-grid a:hover {
-    color: #2c3a41;
-    background-color: #e6e6e6;
+  .text-center {
+    text-align: center;
   }
   
-  .pokemon-grid a:active {
-    background-color: #525252;
-    color: #fafafa;
+  .list {
+    max-width: 550px;
+    margin: auto;
   }
   
-  .pokemon-grid .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #405061;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    min-width: 16px;
-    text-align: right;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
+  li {
+    margin-bottom: 5px;
   }

@@ -1,5 +1,4 @@
-import { Component, OnInit, DoCheck, AfterContentInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { DataService } from '../services/data.service';
 
@@ -10,6 +9,8 @@ import { DataService } from '../services/data.service';
 })
 export class PokemonListComponent implements OnInit{
     pokemonList: Pokemon[] = [];
+
+    p : any;
 
     constructor(
       private dataService: DataService
@@ -39,21 +40,6 @@ export class PokemonListComponent implements OnInit{
           })
         })
       })
-    }
-
-    displayData(){
-      console.log(this.pokemonList);
-    }
-
-    displayDescriptions(){
-      for(let i = 0; i < this.pokemonList.length; i++){
-        let pokemonName = this.pokemonList[i].name;
-        this.dataService.getPokemonDescription(pokemonName)
-        .subscribe((result: any) => {
-          this.pokemonList[i].description = result.flavor_text_entries[0].flavor_text;
-        })
-      }
-      console.log(this.pokemonList);      
     }
 
 }

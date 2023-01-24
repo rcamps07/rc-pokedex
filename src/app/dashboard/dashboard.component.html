@@ -1,5 +1,9 @@
 <h2>Random Pokemon</h2>
 <div class="pokemon-menu" >
     <a *ngFor="let pokemon of pokemonList"
-        routerLink="/detail/{{pokemon.id}}"><span>ID: {{pokemon.id}} </span>{{pokemon.name | uppercase}}</a>
+        routerLink="/detail/{{pokemon.id}}"><span>ID: {{pokemon.id}} </span>{{pokemon.name | uppercase}}
+        <div>
+            <img [src]="pokemon.urlImage" [alt]="pokemon.name">
+        </div>
+    </a>
 </div>
