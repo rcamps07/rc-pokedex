@@ -38,7 +38,6 @@ export class PokemonDetailComponent implements OnInit{
         this.pokemon.height = response.height;
         this.pokemon.weight = response.weight;
         this.pokemon.urlImage = response.sprites.front_default;
-        console.log(this.pokemon);
       });
   }
 
@@ -48,7 +47,10 @@ export class PokemonDetailComponent implements OnInit{
     .subscribe((result: any) => {
       this.pokemon.description = result.flavor_text_entries[0].flavor_text;
     })
-    console.log(this.pokemon.description);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

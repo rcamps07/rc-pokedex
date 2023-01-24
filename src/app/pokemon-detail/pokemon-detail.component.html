@@ -1,5 +1,9 @@
-<div>
-    <p>
-        {{pokemon.description}}
-    </p>
+<div *ngIf="pokemon" >
+    <h2>{{pokemon.name | uppercase}} Details</h2>
+    <h2>ID: {{pokemon.id}}</h2>
+    <img [src]="pokemon.urlImage" [alt]="pokemon.name">
+    <div><span>Height: </span>{{pokemon.height / 10}} meters</div>
+    <div><span>Weight: </span>{{pokemon.weight / 10}} kg</div>
+    <div><span>Description: <q>{{pokemon.description}}</q></span></div>
 </div>
+<button type="button" (click)="goBack()">Back</button>
