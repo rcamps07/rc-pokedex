@@ -2,8 +2,10 @@
 <div class="pokemon-grid" >
     <div class="box" *ngFor="let pokemon of pokemonList">
         <img [src]="pokemon.urlImage" alt="pokemon-image">
-        <h3>{{pokemon.name | uppercase }}</h3>
-        <p>Pokedex ID: {{pokemon.id}}</p>
+        <h3> <a routerLink="/detail/{{pokemon.id}}">
+            <span class="badge">{{pokemon.id}}</span>
+            {{pokemon.name | uppercase}}
+        </a></h3>
     </div>
 </div>
 
