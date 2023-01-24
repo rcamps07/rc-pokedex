@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<h2>Random Pokemon</h2>
+<div class="pokemon-menu" >
+    <a *ngFor="let pokemon of pokemonList"
+        routerLink="/detail/{{pokemon.id}}"><span>ID: {{pokemon.id}} </span>{{pokemon.name | uppercase}}</a>
+</div>

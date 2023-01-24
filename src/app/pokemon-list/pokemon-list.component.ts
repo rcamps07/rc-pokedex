@@ -20,7 +20,7 @@ export class PokemonListComponent implements OnInit{
     }
 
     getPokemon() {
-      this.dataService.getPokemon(10,0)
+      this.dataService.getPokemon(151,0)
       //response returns an Observable object with 4 attributes: count, next, previous, and results
       .subscribe((response: any) => {
 
