@@ -6,6 +6,6 @@ export class Pokemon {
         public height: number,
         public weight: number,
         public urlImage: string,
-        public description?: string
+        public description?: any
     ) {}
 }
